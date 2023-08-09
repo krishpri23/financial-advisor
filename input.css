@@ -1,5 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/* add custom css  */
+/* add custom styles here */
+
+@layer components {
+  p {
+    @apply text-center text-sm text-darkGrayBlue m-2;
+  }
+}
