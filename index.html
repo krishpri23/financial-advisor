@@ -6,10 +6,80 @@
     <link rel="stylesheet" href="dist/output.css" />
     <title>Landing page</title>
   </head>
-  <body>
-    <h1 class="text-5xl">Hello KP!</h1>
-
+  <body class= "mx-3 my-5 md:mx-20 md:my-10 ">
     <!-- NAVBAR -->
-    <nav class="relative container">navbar</nav>
+    <nav class="relative container p-2 mb-20">
+      <!-- Flex container  -->
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="pt-2">
+          <img src="./images/logo.svg" alt="logo" />
+        </div>
+        <!-- menu items -->
+        <div class="flex space-x-4 ">
+          <a href="#" class="hover:text-darkGrayBlue">Pricing</a>
+          <a href="#" class="hover:text-darkGrayBlue">Product</a>
+          <a href="#" class="hover:text-darkGrayBlue">About US</a>
+          <a href="#" class="hover:text-darkGrayBlue">Careers</a>
+          <a href="#" class="hover:text-darkGrayBlue">Community</a>
+        </div>
+
+        <!-- Button -->
+        <a
+          href="#"
+          class="hidden md:block rounded-full baseline px-5 py-2 bg-brightRed text-veryLightGray border-none hover:bg-veryPaleRed"
+        >
+          Get Started</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section id="hero">
+    <!-- Flex container -->
+    <div class=" container flex flex-col-reverse items-center px-6 md:flex-row  ">
+      <!-- left content -->
+      <div class="flex-flex-col justify-center m-2 mb-32 md:w-1/2 bg-cyan-50" >
+        <h1 class="max-w-md font-semibold text-4xl md:text-6xl md:text-left text-darkBlue mb-5 mx-3 ">
+              Bring everyone together to build better products.
+            </h1>
+          <p class="text-darkGrayBlue text-sm max-w-xs mb-8 mx-3 md:text-lg ">
+              Manage makes it simple for software teams to plan day to day tasks while keeping the larger team goals in view.
+            </p>
+            <div class="flex justify-center items-center md:justify-start " >
+              <a href="#"
+              class="rounded-full baseline px-5 py-2 mb-5 bg-brightRed text-veryLightGray border-none hover:bg-veryPaleRed max-w-2">
+                Get Started</a>
+            </div>
+            
+      </div>
+  
+    <div class="md:w-1/2 mr-0 ">
+      <img src="./images/illustration-intro.svg" alt="hero-img"/>
+    </div>
+  </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section id="featured">
+      <div class=" container flex flex-col items-center md:flex justify-between">
+        <!-- left content -->
+        <div class="flex flex-col items-center">
+          <h1 class="text-4xl font-semibold mb-3 mx-3 text-center"> What's different about Manage?</h1>
+          <p >Manage provides all the functioanlity your team needs</p>
+        </div>
+        <!-- right content -->
+        <div class="flex flex-col items-center">
+          <!-- heading of the div -->
+          <div class="flex justify-center items-center space-x-3 bg-veryPaleRed w-max ">
+            <div class="px-8 py-2 bg-brightRed border-none rounded-full text-veryLightGray font-semibold text-lg "> 01 </div>
+            <div class="font-semibold text-md  "> Track company-wide progress </div>
+          </div>
+          <!-- content of the div -->
+         <p > See how your day to day tasks fit into the wider vision. go from tracking progress at the milestone level all the way done to the smallest o dtails. never lose sight of the bigger pciture again</p>
+        </div>
+      </div>
+    </section>
+    </div>
   </body>
 </html>
