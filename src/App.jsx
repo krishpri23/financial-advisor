@@ -1,7 +1,40 @@
+import Navbar from "./components/Navbar";
+import {
+  Hero,
+  PopularProducts,
+  Offers,
+  Footer,
+  Services,
+  Subscribe,
+} from "./sections";
+
 function App() {
   return (
-    <main className="bg-indigo-200">
-      <h2 className="text-indigo-900"> Hello </h2>
+    <main className="px-10 py-5 flex flex-col justify-center items-center font-montserrat ">
+      <Navbar />
+      <section className="px-10 py-5">
+        {" "}
+        <Hero />
+      </section>
+      <section className="px-10 py-5">
+        <PopularProducts />
+      </section>
+      <section className="px-10 py-5"> </section>
+      <section className="px-10 py-5">
+        {" "}
+        <Services />{" "}
+      </section>
+      <section className="px-10 py-5">
+        {" "}
+        <Offers />{" "}
+      </section>
+      <section className="px-10 py-5">
+        <Subscribe />
+      </section>
+      <section>
+        {" "}
+        <Footer />
+      </section>
     </main>
   );
 }
