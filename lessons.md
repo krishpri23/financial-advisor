@@ -45,3 +45,10 @@
   }
 
 3. use component libraries like antD, shadcn etc
+
+### Tips
+
+- Use `max-lg` utility class to hide elements
+- `min-h-screen` to utilize full height
+- `z-index` works only on positioned elements
+-
