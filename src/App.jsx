@@ -10,9 +10,9 @@ import {
 
 function App() {
   return (
-    <main className="px-10 py-5 flex flex-col font-montserrat ">
+    <main className="px-10 flex flex-col font-montserrat ">
       <Navbar />
-      <section className="px-10 py-5">
+      <section className="">
         {" "}
         <Hero />
       </section>

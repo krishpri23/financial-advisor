@@ -4,8 +4,8 @@ import { bigShoe1 } from "../assets/images";
 import ShoeCard from "../components/ShoeCard";
 function Hero() {
   return (
-    <section className="w-full flex flex-col lg:flex-row min-h-screen gap-5 max-w-screen-wide">
-      <div className="xl:w-2/5 flex flex-col items-start w-full  pt-28">
+    <section className="w-full flex flex-col lg:flex-row min-h-screen gap-5">
+      <div className="xl:w-1/2 w-full flex flex-col items-start justify-start  pt-28">
         <p className="text-orange-500"> Our summer collections</p>
         <h1 className="text-8xl font-semibold max-sm:text-[72px] max-sm:leading-[82]">
           <span>The new arrival</span>
@@ -37,22 +37,21 @@ function Hero() {
           ))}
         </div>
       </div>
+
       {/* shoe display image */}
-      <div className=" flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-indigo-50">
-        <img
-          src={bigShoe1}
-          alt="shoe1"
-          width={600}
-          height={500}
-          className="object-contain  z-10"
-        />
-      </div>
-      <div className="flex gap-4 ">
-        {shoes.map((shoe, index) => (
-          <div key={index}>
-            <ShoeCard imgUrl={shoe} changeBigShoeImg={() => {}} bigShoeImg="" />
-          </div>
-        ))}
+      <div className="w-1/2 relative flex flex-col justify-center items-center xl:min-h-screen max-xl:py-40 bg-indigo-50 ">
+        <img src={bigShoe1} alt="shoe1" width={400} height={500} className="" />
+        <div className="flex items-end  gap-4 absolute -bottom-[5%]">
+          {shoes.map((shoe, index) => (
+            <div key={index}>
+              <ShoeCard
+                imgUrl={shoe}
+                changeBigShoeImg={() => {}}
+                bigShoeImg=""
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

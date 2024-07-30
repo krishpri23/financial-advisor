@@ -13,6 +13,10 @@
 
 - Determines how an html element is positioned within its containing element.
 - Relative,absolute(moves independently), fixed, sticky used with top-0 right-10 etc
+- When an element is given relative positioning, it remains in the normal document flow, but you can offset it from its normal position using the top, right, bottom, and left properties. The space originally occupied by the element is preserved in the layout.
+- If you have absolutely positioned elements inside a parent, setting the parent to relative ensures the children are positioned relative to the parent rather than the document.
+- When an element is given absolute positioning, it is removed from the normal document flow and positioned relative to the nearest positioned ancestor
+- The z-index property specifies the stack order of an element. Elements with a higher z-index are in front of those with a lower z-index
 
 ### Display
 
@@ -51,4 +55,3 @@
 - Use `max-lg` utility class to hide elements
 - `min-h-screen` to utilize full height
 - `z-index` works only on positioned elements
--
