@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, isSignedIn } = useUser();
 
   return (
-    <div className="w-full py-2 bg-late-200 flex justify-between items-center ">
+    <div className="py-2 bg-late-200 flex justify-between items-center border shadow-sm ">
       <div className="flex justify-center items-center gap-3">
         <Image
           src="/logo.jpg"
@@ -33,7 +33,7 @@ const Navbar = () => {
                 Dashboard{" "}
               </Button>
             </Link>
-            <Link href="/started">
+            <Link href="/login">
               <Button className="rounded-full"> Get started </Button>
             </Link>
           </div>

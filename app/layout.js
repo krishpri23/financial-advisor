@@ -1,5 +1,4 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import Navbar from "./_components/Navbar";
 import "./globals.css";
 import { Mulish } from "next/font/google";
 
@@ -20,10 +19,7 @@ export default function RootLayout({ children }) {
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang="en">
-        <body className={mulish.variable}>
-          <Navbar />
-          {children}
-        </body>
+        <body className={mulish.variable}>{children}</body>
       </html>
     </ClerkProvider>
   );
