@@ -23,21 +23,21 @@ const Navbar = () => {
       </div>
 
       <>
-        {isSignedIn ? (
-          <UserButton />
-        ) : (
-          <div className="flex justify-center items-center gap-6 px-2">
-            <Link href="/dashboard">
-              <Button variant="outline" className="rounded-full">
-                {" "}
-                Dashboard{" "}
-              </Button>
-            </Link>
-            <Link href="/login">
+        <div className="flex justify-center items-center gap-6 px-2">
+          <Link href="/dashboard">
+            <Button variant="outline" className="rounded-full">
+              {" "}
+              Dashboard{" "}
+            </Button>
+          </Link>
+          {isSignedIn ? (
+            <UserButton />
+          ) : (
+            <Link href="/started">
               <Button className="rounded-full"> Get started </Button>
             </Link>
-          </div>
-        )}
+          )}
+        </div>
       </>
     </div>
   );
