@@ -33,7 +33,7 @@ const Navbar = () => {
           {isSignedIn ? (
             <UserButton />
           ) : (
-            <Link href="/started">
+            <Link href="/login">
               <Button className="rounded-full"> Get started </Button>
             </Link>
           )}
