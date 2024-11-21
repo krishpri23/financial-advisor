@@ -3,7 +3,7 @@ import { integer, pgTable, serial, varchar } from "drizzle-orm/pg-core";
 export const budgetTable = pgTable("budget", {
   id: serial("id").primaryKey(),
   name: varchar("name").notNull(),
-  amount: varchar("amount").notNull(),
+  amount: integer("amount").notNull(),
   Icon: varchar("icon"),
   createdBy: varchar("createdBy").notNull(),
 });
@@ -11,7 +11,7 @@ export const budgetTable = pgTable("budget", {
 export const incomeTable = pgTable("income", {
   id: serial("id").primaryKey(),
   name: varchar("name").notNull(),
-  amount: varchar("amount").notNull(),
+  amount: integer("amount").notNull(),
   Icon: varchar("icon"),
   createdBy: varchar("createdBy").notNull(),
 });

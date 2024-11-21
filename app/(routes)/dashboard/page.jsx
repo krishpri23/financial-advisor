@@ -13,6 +13,7 @@ import ExpenseListTable from "./_components/ExpenseListTable";
 
 const page = () => {
   const { user } = useUser();
+
   const [budgetList, setBudgetList] = useState([]);
   const [incomeList, setIncomeList] = useState([]);
   const [expenseList, setExpenseList] = useState([]);
