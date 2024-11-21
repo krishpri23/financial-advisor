@@ -7,9 +7,9 @@ import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { desc, eq, getTableColumns, sql } from "drizzle-orm";
 import { budgetTable, expenseTable } from "@/utils/schema";
-import BudgetItem from "../../_components/BudgetItem";
 import CreateBudget from "./CreateBudget";
 import { db } from "@/utils/dbConfig";
+import BudgetItem from "./BudgetItem";
 
 const BudgetList = () => {
   const [budgetList, setBudgetList] = useState([]);

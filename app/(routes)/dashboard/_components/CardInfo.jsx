@@ -41,6 +41,9 @@ const CardInfo = ({ budgetList, incomeList }) => {
     let income = 0;
     let spent = 0;
 
+    console.log(budgetList, "budget list");
+    console.log(incomeList, "income list");
+
     budgetList.forEach((item) => {
       budget = budget + Number(item.amount);
       spent = spent + item.totalSpent;
@@ -49,6 +52,11 @@ const CardInfo = ({ budgetList, incomeList }) => {
     incomeList.forEach((item) => {
       income = income + item.totalAmount;
     });
+
+    setTotalBudget(budget);
+    setTotalIncome(income);
+    setTotalSpent(spent);
+    setBudgetCount(budgetList?.length);
   };
 
   return (
@@ -71,7 +79,7 @@ const CardInfo = ({ budgetList, incomeList }) => {
             <div className="flex justify-between items-center border border-gray-200 rounded-lg p-6 bg-white shadow-sm w-80 h-32 ">
               <div className="flex flex-col justify-start items-start gap-3  ">
                 <h2> Total Budget</h2>
-                <h1 className="font-bold text-2xl"> {totalBudget}</h1>
+                <h1 className="font-bold text-2xl"> ${totalBudget}</h1>
               </div>
 
               <div className="rounded-full bg-blue-900 p-5">
@@ -82,7 +90,7 @@ const CardInfo = ({ budgetList, incomeList }) => {
             <div className="flex justify-between items-center border border-gray-200 rounded-lg p-6 bg-white shadow-sm w-80 h-32 ">
               <div className="flex flex-col justify-start items-start gap-3  ">
                 <h2> Total Spent</h2>
-                <h1 className="font-bold text-2xl"> {totalSpent}</h1>
+                <h1 className="font-bold text-2xl"> ${totalSpent}</h1>
               </div>
 
               <div className="rounded-full bg-blue-900 p-5">
@@ -104,7 +112,7 @@ const CardInfo = ({ budgetList, incomeList }) => {
             <div className="flex justify-between items-center border border-gray-200 rounded-lg p-6 bg-white shadow-sm w-80 h-32 ">
               <div className="flex flex-col justify-start items-start gap-3  ">
                 <h2> Income</h2>
-                <h1 className="font-bold text-2xl">{totalIncome} </h1>
+                <h1 className="font-bold text-2xl">${totalIncome} </h1>
               </div>
 
               <div className="rounded-full bg-blue-900 p-5">

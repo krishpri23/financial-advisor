@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { budgetTable } from "@/utils/schema";
+import { incomeTable } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import EmojiPicker from "emoji-picker-react";
@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import { db } from "@/utils/dbConfig";
 import { toast } from "@/hooks/use-toast";
 
-function CreateBudget({ refreshData }) {
+function Createincome({ refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState("😀");
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
 
@@ -28,22 +28,22 @@ function CreateBudget({ refreshData }) {
   const { user } = useUser();
 
   /**
-   * Used to Create New Budget
+   * Used to Create New income
    */
-  const onCreateBudget = async () => {
+  const onCreateIncome = async () => {
     const result = await db
-      .insert(budgetTable)
+      .insert(incomeTable)
       .values({
         name: name,
         amount: amount,
         createdBy: user?.primaryEmailAddress?.emailAddress,
         Icon: emojiIcon,
       })
-      .returning({ insertedId: budgetTable.id });
+      .returning({ insertedId: incomeTable.id });
 
     if (result) {
       refreshData();
-      toast("New Budget Created!");
+      toast("New income Created!");
     }
 
     console.log(result);
@@ -58,12 +58,12 @@ function CreateBudget({ refreshData }) {
             cursor-pointer hover:shadow-md"
           >
             <h2 className="text-3xl">+</h2>
-            <h2>Create New Budget</h2>
+            <h2>Create New Income</h2>
           </div>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create New Budget</DialogTitle>
+            <DialogTitle>Create New income</DialogTitle>
             <DialogDescription>
               <div className="mt-5">
                 <Button
@@ -83,14 +83,14 @@ function CreateBudget({ refreshData }) {
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Budget Name</h2>
+                  <h2 className="text-black font-medium my-1">income Name</h2>
                   <Input
                     placeholder="e.g. Home Decor"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Budget Amount</h2>
+                  <h2 className="text-black font-medium my-1">income Amount</h2>
                   <Input
                     type="number"
                     placeholder="e.g. 5000$"
@@ -104,10 +104,10 @@ function CreateBudget({ refreshData }) {
             <DialogClose asChild>
               <Button
                 disabled={!(name && amount)}
-                onClick={() => onCreateBudget()}
+                onClick={() => onCreateIncome()}
                 className="mt-5 w-full rounded-full"
               >
-                Create Budget
+                Create income
               </Button>
             </DialogClose>
           </DialogFooter>
@@ -117,4 +117,4 @@ function CreateBudget({ refreshData }) {
   );
 }
 
-export default CreateBudget;
+export default Createincome;

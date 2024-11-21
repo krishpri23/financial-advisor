@@ -64,7 +64,7 @@ const page = () => {
     const income = await db
       .select({
         ...getTableColumns(incomeTable),
-        totalAmount: sql`sum(cast(${incomeTable.amount} as numeric()))`.mapWith(
+        totalAmount: sql`sum(cast(${incomeTable.amount} as integer))`.mapWith(
           Number
         ),
       })
