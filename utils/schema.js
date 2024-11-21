@@ -19,7 +19,7 @@ export const incomeTable = pgTable("income", {
 export const expenseTable = pgTable("expense", {
   id: serial("id").primaryKey(),
   name: varchar("name").notNull(),
-  amount: varchar("amount").notNull(),
+  amount: integer("amount").notNull(),
   //   1 - many relationship
   budgetID: integer("budgetID").references(() => budgetTable.id),
   createdBy: varchar("createdBy").notNull(),

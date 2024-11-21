@@ -26,7 +26,9 @@ const page = () => {
     const budget = await db
       .select({
         ...getTableColumns(budgetTable),
-        totalSpent: sql`sum(${expenseTable.amount})`.mapWith(Number),
+        totalSpent: sql`sum(cast(${expenseTable.amount} as integer))`.mapWith(
+          Number
+        ),
         totalItem: sql`count(${expenseTable.id})`.mapWith(Number),
       })
       .from(budgetTable)

@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import EmojiPicker from "emoji-picker-react";
 import { Input } from "@/components/ui/input";
 import { db } from "@/utils/dbConfig";
+import { toast } from "@/hooks/use-toast";
 
 function CreateBudget({ refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState("😀");
