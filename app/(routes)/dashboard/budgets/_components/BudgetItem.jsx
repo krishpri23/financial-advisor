@@ -1,3 +1,6 @@
+/*
+This is a clickable component which takes to a expense page with id.
+*/
 import Link from "next/link";
 import React from "react";
 
