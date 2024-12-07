@@ -1,15 +1,15 @@
 /**
  * Get budgets from db and pass the budget to budgetItem
  */
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/nextjs";
-import { desc, eq, getTableColumns, sql } from "drizzle-orm";
-import { budgetTable, expenseTable } from "@/utils/schema";
-import CreateBudget from "./CreateBudget";
-import { db } from "@/utils/dbConfig";
-import BudgetItem from "./BudgetItem";
+import React, { useState, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs';
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
+import { budgetTable, expenseTable } from '@/utils/schema';
+import CreateBudget from './CreateBudget';
+import { db } from '@/utils/dbConfig';
+import BudgetItem from './BudgetItem';
 
 const BudgetList = () => {
   const [budgetList, setBudgetList] = useState([]);
@@ -29,7 +29,7 @@ const BudgetList = () => {
         totalItem: sql`count(${expenseTable.id})`.mapWith(Number),
       })
       .from(budgetTable)
-      .leftJoin(expenseTable, eq(budgetTable.id, expenseTable.budgetId))
+      .leftJoin(expenseTable, eq(budgetTable.id, expenseTable.budgetID))
       .where(eq(budgetTable.createdBy, user?.primaryEmailAddress?.emailAddress))
       .groupBy(budgetTable.id)
       .orderBy(desc(budgetTable.id));

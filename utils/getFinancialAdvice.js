@@ -16,11 +16,11 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
     `;
 
     // Send the prompt to the Gemini API
-    const result = await model.generateContent({
-      prompt: userPrompt,
-      maxOutputTokens: 150,
-      temperature: 0.7,
-    });
+    // const result = await model.generateContent({
+    //   prompt: userPrompt,
+    //   maxOutputTokens: 150,
+    //   temperature: 0.7,
+    // });
 
     console.log('response from ai', result);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Bar,
   BarChart,
@@ -7,13 +7,14 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
+} from 'recharts';
 
 const BarChartDashboard = ({ budgetList }) => {
+  console.log('BARCHAR DASHBOARD', budgetList);
   return (
     <div className="border rounded-2xl p-5">
       <h2 className="text-lg font-bold"> Activity</h2>
-      <ResponsiveContainer width={"80%"} height={300}>
+      <ResponsiveContainer width={'80%'} height={300}>
         <BarChart
           width={400}
           height={400}
@@ -27,8 +28,8 @@ const BarChartDashboard = ({ budgetList }) => {
           <Tooltip />
           <Legend />
 
-          <Bar dataKey="Total Spent" stackId="a" fill="#4845d2" />
-          <Bar dataKey="Amount" stackId="a" fill="#c3ceff" />
+          <Bar dataKey="totalSpent" stackId="a" fill="#4845d2" />
+          <Bar dataKey="amount" stackId="a" fill="#c3ceff" />
         </BarChart>
       </ResponsiveContainer>
     </div>

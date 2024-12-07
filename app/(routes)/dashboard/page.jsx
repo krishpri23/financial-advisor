@@ -22,10 +22,10 @@ const page = () => {
     user && getBudgetList();
   }, [user]);
 
-  console.log('expense list from dashboard page', expensesList);
+  console.log('budget list from dashboard home page', budgetList);
 
   const getBudgetList = async () => {
-    const budget = await db
+    const result = await db
       .select({
         ...getTableColumns(budgetTable),
         totalSpent: sql`sum(cast(${expenseTable.amount} as integer))`.mapWith(
@@ -34,12 +34,12 @@ const page = () => {
         totalItem: sql`count(${expenseTable.id})`.mapWith(Number),
       })
       .from(budgetTable)
-      .leftJoin(expenseTable, eq(budgetTable.id, expenseTable.id))
+      .leftJoin(expenseTable, eq(budgetTable.id, expenseTable.budgetID))
       .where(eq(budgetTable.createdBy, user?.primaryEmailAddress?.emailAddress))
       .groupBy(budgetTable.id)
-      .orderBy(desc(budgetTable.id)); //descending order
+      .orderBy(desc(budgetTable.id));
 
-    setBudgetList(budget);
+    setBudgetList(result);
 
     getAllExpenses();
     getIncomeList();
@@ -111,9 +111,7 @@ const page = () => {
                 <div
                   className="h-[180p] w-full bg-slate-200 lg animate-pulse"
                   key={i}
-                >
-                  {item}
-                </div>
+                ></div>
               ))}
         </div>
       </div>
