@@ -16,13 +16,13 @@ const page = () => {
 
   const [budgetList, setBudgetList] = useState([]);
   const [incomeList, setIncomeList] = useState([]);
-  const [expenseList, setExpenseList] = useState([]);
+  const [expensesList, setExpensesList] = useState([]);
 
   useEffect(() => {
     user && getBudgetList();
   }, [user]);
 
-  console.log('expense list from dashboard page', expenseList);
+  console.log('expense list from dashboard page', expensesList);
 
   const getBudgetList = async () => {
     const budget = await db
@@ -62,7 +62,7 @@ const page = () => {
         .orderBy(desc(expenseTable.id));
 
       if (result) {
-        setExpenseList(result); // Ensure data is properly set
+        setExpensesList(result); // Ensure data is properly set
       }
     } catch (error) {
       console.error('Error fetching expenses: ', error);
@@ -96,7 +96,7 @@ const page = () => {
           <BarChartDashboard budgetList={budgetList} />
 
           <ExpenseTable
-            expenseList={expenseList}
+            expensesList={expensesList}
             refreshData={() => getBudgetList()}
           />
         </div>

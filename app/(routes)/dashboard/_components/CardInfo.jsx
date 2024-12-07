@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   DollarSign,
   PiggyBank,
   NotebookTabs,
   HandCoins,
   Sparkles,
-} from "lucide-react";
+} from 'lucide-react';
+import getFinancialAdvice from '@/utils/getFinancialAdvice';
 const CardInfo = ({ budgetList, incomeList }) => {
   const [totalBudget, setTotalBudget] = useState();
   const [totalSpent, setTotalSpent] = useState();
@@ -22,27 +23,27 @@ const CardInfo = ({ budgetList, incomeList }) => {
   }, [budgetList, incomeList]);
 
   //   generate financial advice
-  //   useEffect(() => {
-  //     if (totalBudget > 0 && totalBudget > 0 && totalBudget > 0) {
-  //       const fetchFinancialAdvice = async () => {
-  //         const advice = await getFinancialAdvice(
-  //           totalBudget,
-  //           totalIncome,
-  //           totalSpent
-  //         );
+  useEffect(() => {
+    if (totalBudget > 0 && totalIncome > 0 && totalSpent > 0) {
+      const fetchFinancialAdvice = async () => {
+        const advice = await getFinancialAdvice(
+          totalBudget,
+          totalIncome,
+          totalSpent
+        );
 
-  //         setFinAdvice(advice);
-  //       };
-  //     }
-  //   }, [totalBudget,totalBudget,totalBudget]);
+        console.log(advice, 'inside card info');
+
+        setFinAdvice(advice);
+      };
+      fetchFinancialAdvice();
+    }
+  }, [totalBudget, totalIncome, totalSpent]);
 
   const calculateCardInfo = () => {
     let budget = 0;
     let income = 0;
     let spent = 0;
-
-    console.log(budgetList, "budget list");
-    console.log(incomeList, "income list");
 
     budgetList.forEach((item) => {
       budget = budget + Number(item.amount);
@@ -64,16 +65,16 @@ const CardInfo = ({ budgetList, incomeList }) => {
       {/* ai section */}
       {budgetList?.length > 0 ? (
         <>
-          <div className="flex flex-col justify-center items-start gap-4 p-10  border border-slate-200 rounded-md ">
+          {/* <div className="flex flex-col justify-center items-start gap-4 p-10  border border-slate-200 rounded-md ">
             <div className="flex justify-start items-center  gap-2">
               <h2 className="text-xl font-semibold"> Finance Smart AI </h2>
               <Sparkles className="text-amber-900" />
             </div>
             <p className="px-5 py-2 font-lg">
-              {" "}
-              {finAdvice || "Loading Financial Advice..."}{" "}
+              {' '}
+              {finAdvice || 'Loading Financial Advice...'}{' '}
             </p>
-          </div>
+          </div> */}
 
           <div className="flex flex-wrap justify-start items-center gap-10 mt-10">
             <div className="flex justify-between items-center border border-gray-200 rounded-lg p-6 bg-white shadow-sm w-80 h-32 ">
@@ -122,7 +123,7 @@ const CardInfo = ({ budgetList, incomeList }) => {
           </div>
         </>
       ) : (
-        ""
+        ''
       )}
     </>
   );

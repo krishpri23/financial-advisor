@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React, { useEffect } from 'react';
+import Image from 'next/image';
 import {
   LayoutGrid,
   PiggyBank,
@@ -8,42 +8,35 @@ import {
   CircleDollarSign,
   TrendingUp,
   TrendingDownIcon,
-} from "lucide-react";
-import { UserButton } from "@clerk/nextjs";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+} from 'lucide-react';
+import { UserButton } from '@clerk/nextjs';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 function Appsidebar() {
   const menuList = [
     {
       id: 1,
-      name: "Dashboard",
+      name: 'Dashboard',
       icon: LayoutGrid,
-      path: "/dashboard",
+      path: '/dashboard',
     },
     {
       id: 2,
-      name: "Incomes",
+      name: 'Incomes',
       icon: CircleDollarSign,
-      path: "/dashboard/incomes",
+      path: '/dashboard/incomes',
     },
     {
       id: 2,
-      name: "Budgets",
+      name: 'Budgets',
       icon: PiggyBank,
-      path: "/dashboard/budgets",
+      path: '/dashboard/budgets',
     },
     {
       id: 3,
-      name: "Expenses",
+      name: 'Expenses',
       icon: ReceiptText,
-      path: "/dashboard/expenses",
-    },
-
-    {
-      id: 4,
-      name: "Upgrade",
-      icon: ShieldCheck,
-      path: "/dashboard/upgrade",
+      path: '/dashboard/expenses',
     },
   ];
   const path = usePathname();
@@ -51,7 +44,7 @@ function Appsidebar() {
   return (
     <div className="h-screen p-5 border shadow-sm">
       <div className="flex flex-row items-center">
-        <Image src={"/logo.jpg"} alt="logo" width={40} height={25} />
+        <Image src={'/logo.jpg'} alt="logo" width={40} height={25} />
         <span className="text-blue-800 font-bold text-xl">Finance Smart</span>
       </div>
       <div className="mt-5">
@@ -63,7 +56,7 @@ function Appsidebar() {
                     mb-2
                     p-4 cursor-pointer rounded-full
                     hover:text-primary hover:bg-blue-100
-                    ${path === menu.path && "text-primary bg-blue-100"}
+                    ${path === menu.path && 'text-primary bg-blue-100'}
                     `}
             >
               <menu.icon />
