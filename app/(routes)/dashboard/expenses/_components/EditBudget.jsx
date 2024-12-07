@@ -20,7 +20,7 @@ import { eq } from 'drizzle-orm';
 import { toast } from 'sonner';
 import { budgetTable } from '@/utils/schema';
 function EditBudget({ budgetInfo, refreshData }) {
-  const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
+  const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.Icon);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
 
   const [name, setName] = useState();
@@ -30,7 +30,7 @@ function EditBudget({ budgetInfo, refreshData }) {
 
   useEffect(() => {
     if (budgetInfo) {
-      setEmojiIcon(budgetInfo?.icon);
+      setEmojiIcon(budgetInfo?.Icon);
       setAmount(budgetInfo.amount);
       setName(budgetInfo.name);
     }
@@ -41,7 +41,7 @@ function EditBudget({ budgetInfo, refreshData }) {
       .set({
         name: name,
         amount: amount,
-        icon: emojiIcon,
+        Icon: emojiIcon,
       })
       .where(eq(budgetTable.id, budgetInfo.id))
       .returning();
