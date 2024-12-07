@@ -1,16 +1,15 @@
-"use client";
+'use client';
 
-import { useUser } from "@clerk/nextjs";
+import { useUser } from '@clerk/nextjs';
 
-import React, { useEffect, useState } from "react";
-import CardInfo from "./_components/CardInfo";
-import { db } from "@/utils/dbConfig";
-import { desc, eq, getTableColumns, sql } from "drizzle-orm";
-import { budgetTable, expenseTable, incomeTable } from "@/utils/schema";
-import BarChartDashboard from "./_components/BarChartDashboard";
-import ExpenseListTable from "./_components/ExpenseListTable";
-import BudgetItem from "./budgets/_components/BudgetItem";
-
+import React, { useEffect, useState } from 'react';
+import CardInfo from './_components/CardInfo';
+import { db } from '@/utils/dbConfig';
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
+import { budgetTable, expenseTable, incomeTable } from '@/utils/schema';
+import BarChartDashboard from './_components/BarChartDashboard';
+import BudgetItem from './budgets/_components/BudgetItem';
+import ExpenseTable from './expenses/_components/ExpenseTable';
 
 const page = () => {
   const { user } = useUser();
@@ -22,6 +21,8 @@ const page = () => {
   useEffect(() => {
     user && getBudgetList();
   }, [user]);
+
+  console.log('expense list from dashboard page', expenseList);
 
   const getBudgetList = async () => {
     const budget = await db
@@ -45,20 +46,27 @@ const page = () => {
   };
 
   const getAllExpenses = async () => {
-    const expense = await db
-      .select({
-        id: expenseTable.id,
-        name: expenseTable.name,
-        amount: expenseTable.amount,
-        createdBy: expenseTable.createdBy,
-      })
-      .from(budgetTable)
-      // WHERE expenseTable.createdBy = 'user@example.com'
-      .rightJoin(expenseTable, eq(budgetTable.id, expenseTable.budgetID))
-      .where(eq(budgetTable.createdBy, user?.primaryEmailAddress?.emailAddress))
-      .orderBy(desc(expenseTable.id));
+    try {
+      const result = await db
+        .select({
+          id: expenseTable.id,
+          name: expenseTable.name,
+          amount: expenseTable.amount,
+          createdBy: expenseTable.createdBy,
+        })
+        .from(budgetTable)
+        .rightJoin(expenseTable, eq(budgetTable.id, expenseTable.budgetID))
+        .where(
+          eq(budgetTable.createdBy, user?.primaryEmailAddress?.emailAddress)
+        )
+        .orderBy(desc(expenseTable.id));
 
-    setExpenseList(expense);
+      if (result) {
+        setExpenseList(result); // Ensure data is properly set
+      }
+    } catch (error) {
+      console.error('Error fetching expenses: ', error);
+    }
   };
 
   const getIncomeList = async () => {
@@ -78,7 +86,7 @@ const page = () => {
     <div className="w-full h-full px-10 py-5">
       <h1 className="font-bold text-3xl"> Hi, {user?.fullName} </h1>
       <p className="text-gray-400 text-xl py-3 mb-5">
-        {" "}
+        {' '}
         Here's what happening with your money, Let's manage your expense
       </p>
       <CardInfo budgetList={budgetList} incomeList={incomeList} />
@@ -87,7 +95,7 @@ const page = () => {
         <div className="lg:col-span-2">
           <BarChartDashboard budgetList={budgetList} />
 
-          <ExpenseListTable
+          <ExpenseTable
             expenseList={expenseList}
             refreshData={() => getBudgetList()}
           />

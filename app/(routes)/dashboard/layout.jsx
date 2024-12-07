@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import DashboardHeader from "./_components/DashboardHeader";
-import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import { db } from "@/utils/dbConfig";
-import { budgetTable } from "@/utils/schema";
-import { eq } from "drizzle-orm";
-import Appsidebar from "./_components/Appsidebar";
+import React, { useEffect } from 'react';
+import DashboardHeader from './_components/DashboardHeader';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import { db } from '@/utils/dbConfig';
+import { budgetTable } from '@/utils/schema';
+import { eq } from 'drizzle-orm';
+import Appsidebar from './_components/Appsidebar';
 
 const layout = ({ children }) => {
   const { user } = useUser();
@@ -24,7 +24,7 @@ const layout = ({ children }) => {
     console.log(result);
 
     if (result?.length == 0) {
-      router.replace("/dashboard/budgets");
+      router.replace('/dashboard/budgets');
     }
   };
 
@@ -33,13 +33,6 @@ const layout = ({ children }) => {
   }, [user]);
 
   return (
-    // <SidebarProvider >
-    //   <Sidebar>
-    //     <main>{children}</main>
-    //   </Sidebar>
-    //   <DashboardHeader />
-    // </SidebarProvider>
-
     <div>
       <div className="fixed md:w-64 hidden md:block ">
         <Appsidebar />

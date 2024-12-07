@@ -2,14 +2,14 @@
 
 'use client';
 import { db } from '@/utils/dbConfig';
-import { Budgets, budgetTable, Expenses, expenseTable } from '@/utils/schema';
+import { budgetTable, expenseTable } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BudgetItem from '../../budgets/_components/BudgetItem';
 import AddExpense from '../_components/AddExpense';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Pen, PenBox, Trash } from 'lucide-react';
+import { ArrowLeft, Trash } from 'lucide-react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,7 +25,6 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import EditBudget from '../_components/EditBudget';
 import ExpenseTable from '../_components/ExpenseTable';
-// import { use } from 'react';
 
 /* @next-codemod-ignore */
 const ExpenseItemPage = ({ params }) => {
@@ -65,10 +64,10 @@ const ExpenseItemPage = ({ params }) => {
       .select()
       .from(expenseTable)
       /* @next-codemod-ignore */
-      .where(eq(expenseTable.budgetID, params.id))
+      .where(eq(expenseTable.budgetID, params?.id))
       .orderBy(desc(expenseTable.id));
     setExpensesList(result);
-    console.log(result);
+    console.log(result, 'from expenses id page');
   };
 
   /**
@@ -77,13 +76,13 @@ const ExpenseItemPage = ({ params }) => {
   const deleteBudget = async () => {
     const deleteExpenseResult = await db
       .delete(expenseTable)
-      .where(eq(expenseTable.budgetID, params.id))
+      .where(eq(expenseTable.budgetID, params?.id))
       .returning();
 
     if (deleteExpenseResult) {
       const result = await db
         .delete(budgetTable)
-        .where(eq(budgetTable.id, params.id))
+        .where(eq(budgetTable.id, params?.id))
         .returning();
     }
     toast('Budget Deleted !');
