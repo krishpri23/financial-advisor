@@ -44,7 +44,9 @@ function Appsidebar() {
   return (
     <div className="h-screen p-5 border shadow-sm">
       <div className="flex flex-row items-center">
-        <Image src={'/logo.jpg'} alt="logo" width={40} height={25} />
+        <Link href="/">
+          <Image src={'/logo.jpg'} alt="logo" width={40} height={25} />
+        </Link>{' '}
         <span className="text-blue-800 font-bold text-xl">Finance Smart</span>
       </div>
       <div className="mt-5">
