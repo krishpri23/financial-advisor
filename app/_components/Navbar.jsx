@@ -26,14 +26,16 @@ const Navbar = () => {
 
       <>
         <div className="flex justify-center items-center gap-6 px-2">
-          <Link href="/dashboard">
-            <Button variant="outline" className="rounded-full">
-              {' '}
-              Dashboard{' '}
-            </Button>
-          </Link>
           {isSignedIn ? (
-            <UserButton />
+            <>
+              <Link href="/dashboard">
+                <Button variant="outline" className="rounded-full">
+                  {' '}
+                  Dashboard{' '}
+                </Button>
+              </Link>
+              <UserButton />
+            </>
           ) : (
             <Link href="/login">
               <Button className="rounded-full"> Get started </Button>
