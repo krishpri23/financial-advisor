@@ -37,7 +37,7 @@ const Navbar = () => {
               <UserButton />
             </>
           ) : (
-            <Link href="/login">
+            <Link href="/dashboard">
               <Button className="rounded-full"> Get started </Button>
             </Link>
           )}

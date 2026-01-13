@@ -19,7 +19,7 @@ const page = () => {
   const [expensesList, setExpensesList] = useState([]);
 
   useEffect(() => {
-    user && getBudgetList();
+    user || getBudgetList();
   }, [user]);
 
   console.log('budget list from dashboard home page', budgetList);
